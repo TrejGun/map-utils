@@ -1,0 +1,21 @@
+{
+    "name": "map-utils",
+    "version": "0.0.1",
+    "homepage": "http://mabp.kiev.ua/",
+    "authors": [
+        "CTAPbIu_MABP <ctapbiumabp@gmail.com>"
+    ],
+    "ignore": [
+        "**/.*",
+        "dist",
+        "node_modules",
+        "test",
+        "*.json",
+        "*.md",
+        "Gruntfile.js"
+    ],
+    "dependencies": {
+        "raphael": "2.1.2",
+        "graphael": "git@github.com:CTAPbIuMABP/g.raphael.git#0.5.0"
+    }
+}

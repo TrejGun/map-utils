@@ -1,0 +1,27 @@
+{
+	"curly": true,
+	"eqeqeq": true,
+	"immed": true,
+	"latedef": true,
+	"newcap": false,
+	"noarg": true,
+	"noempty": true,
+	"quotmark": true,
+	"undef": true,
+	"unused": true,
+	"strict": true,
+
+	"boss": true,
+	"eqnull": true,
+	"sub": true,
+
+	"browser": true,
+    "devel": true,
+
+	"onevar": false,
+
+	"globals": {
+		"google": true,
+		"Raphael": true
+	}
+}
