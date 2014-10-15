@@ -34,19 +34,19 @@
                 c = c / 2;
                 if (y < c) {
                     if (x < c) {
-                        f += "q"
+                        f += "q";
                     } else {
                         f += "r";
-                        x -= c
+                        x -= c;
                     }
                 } else {
                     if (x < c) {
                         f += "t";
-                        y -= c
+                        y -= c;
                     } else {
                         f += "s";
                         x -= c;
-                        y -= c
+                        y -= c;
                     }
                 }
             }

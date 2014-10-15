@@ -1,5 +1,7 @@
 (function () {
 
+    "use strict";
+
     function CanvasOverlay (options) {
         this.setMap(options.map);
         this.shapes = options.shapes || [];
@@ -15,15 +17,15 @@
             center = projection.fromLatLngToDivPixel(new google.maps.LatLng(0, 0)),
             worldWidth = projection.getWorldWidth();
 
-        this.canvas = document.createElement('canvas');
-        this.canvas.style.border = 'none';
-        this.canvas.style.position = 'absolute';
-        this.canvas.style.overflow = 'visible';
+        this.canvas = document.createElement("canvas");
+        this.canvas.style.border = "none";
+        this.canvas.style.position = "absolute";
+        this.canvas.style.overflow = "visible";
 
         this.canvas.width = worldWidth;
         this.canvas.height = worldWidth;
-        this.canvas.style.left = center.x - worldWidth / 2 + 'px';
-        this.canvas.style.top = center.y - worldWidth / 2 + 'px';
+        this.canvas.style.left = center.x - worldWidth / 2 + "px";
+        this.canvas.style.top = center.y - worldWidth / 2 + "px";
 
         this.getPanes().overlayImage.appendChild(this.canvas);
     };
@@ -36,7 +38,7 @@
             left = center.x - worldWidth / 2,
             top = center.y - worldWidth / 2,
             zoom = this.getMap().getZoom(),
-            context = this.canvas.getContext('2d'),
+            context = this.canvas.getContext("2d"),
             figures = [],
             dim = {
                 left: [0],
@@ -52,7 +54,7 @@
         for (var s = 0, l = this.shapes.length; s < l; s++) {
             try {
 
-                data = this.dimensions.rect(this.shapes[s], {
+                var data = this.dimensions.rect(this.shapes[s], {
                     map: this.getMap(),
                     bounds: bounds,
                     worldWidth: worldWidth,
@@ -67,7 +69,7 @@
                     dim.right.push(data.dimension.right);
                     dim.bottom.push(data.dimension.bottom);
                 }
-                figures.push(data)
+                figures.push(data);
             } catch (e) {
                 console.log(e);
             }
@@ -80,24 +82,26 @@
             fullWorldWidth = offsetLeft + worldWidth + offsetRight,
             fullWorldHeight = offsetTop + worldWidth + offsetBottom;
 
-        this.canvas.style.left = left - offsetLeft + 'px';
-        this.canvas.style.top = top - offsetTop + 'px';
+        this.canvas.style.left = left - offsetLeft + "px";
+        this.canvas.style.top = top - offsetTop + "px";
         this.canvas.width = fullWorldWidth;
         this.canvas.height = fullWorldHeight;
 
+        function draw(i, self, figures) {
+            self.intervals.push(setInterval(function () {
+                self.shapes[i].drawable.draw(context, {
+                    left: offsetLeft,
+                    top: offsetTop,
+                    right: offsetRight,
+                    bottom: offsetBottom,
+                    fullWorldWidth: fullWorldWidth,
+                    fullWorldHeight: fullWorldHeight
+                }, figures[i].figure, zoom);
+            }, self.shapes[i].interval));
+        }
+
         for (var z = 0, x = this.shapes.length; z < x; z++) {
-            (function (i, self, figures) {
-                self.intervals.push(setInterval(function () {
-                    self.shapes[i].drawable.draw(context, {
-                        left: offsetLeft,
-                        top: offsetTop,
-                        right: offsetRight,
-                        bottom: offsetBottom,
-                        fullWorldWidth: fullWorldWidth,
-                        fullWorldHeight: fullWorldHeight
-                    }, figures[i].figure, zoom);
-                }, self.shapes[i].interval));
-            })(z, this, figures);
+            draw(z, this, figures);
         }
     };
 

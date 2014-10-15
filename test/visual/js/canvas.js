@@ -1,6 +1,7 @@
 google.maps.event.addDomListener(window, "load", function () {
 
-    // example 1
+    "use strict";
+
     var map = new google.maps.Map(document.getElementById("map"), {
         zoom: 0,
         center: new google.maps.LatLng(0, 0),
@@ -27,7 +28,7 @@ google.maps.event.addDomListener(window, "load", function () {
 
                         var d = (this.size << zoom) / 2;
                         context.beginPath();
-                        for (var i = x = y = q = 0; i < 50; i++) {
+                        for (var i = 0, x = 0, y = 0, q = 0; i < 50; i++) {
                             this.theta += 2 * Math.PI;
                             q = (this.innerRadius / this.outerRadius - 1) * this.theta;
                             x = size.left + figure.x + (this.innerRadius - this.outerRadius) * Math.cos(this.theta) + d * Math.cos(q) + d;
@@ -59,7 +60,7 @@ google.maps.event.addDomListener(window, "load", function () {
 
                         var d = (this.size << zoom) / 2;
                         context.beginPath();
-                        for (var i = x = y = q = 0; i < 50; i++) {
+                        for (var i = 0, x = 0, y = 0, q = 0; i < 50; i++) {
                             this.theta += 2 * Math.PI;
                             q = (this.innerRadius / this.outerRadius - 1) * this.theta;
                             x = size.left + figure.x + (this.innerRadius - this.outerRadius) * Math.cos(this.theta) + d * Math.cos(q) + d;

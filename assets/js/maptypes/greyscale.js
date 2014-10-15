@@ -33,19 +33,19 @@
                 c = c / 2;
                 if (y < c) {
                     if (x < c) {
-                        f += "q"
+                        f += "q";
                     } else {
                         f += "r";
-                        x -= c
+                        x -= c;
                     }
                 } else {
                     if (x < c) {
                         f += "t";
-                        y -= c
+                        y -= c;
                     } else {
                         f += "s";
                         x -= c;
-                        y -= c
+                        y -= c;
                     }
                 }
             }
@@ -64,7 +64,7 @@
                 var imgdata = context.getImageData(0, 0, 256, 256),
                     pix = imgdata.data;
                 for (var i = 0, grayscale = 0, n = pix.length; i < n; i += 4) {
-                    grayscale = pix[i] * .3 + pix[i + 1] * .59 + pix[i + 2] * .11;
+                    grayscale = pix[i] * 0.3 + pix[i + 1] * 0.59 + pix[i + 2] * 0.11;
                     pix[i] = grayscale;  // red
                     pix[i + 1] = grayscale;  // green
                     pix[i + 2] = grayscale;  // blue

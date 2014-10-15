@@ -1,6 +1,7 @@
 google.maps.event.addDomListener(window, "load", function () {
 
-    // example 1
+    "use strict";
+
     var map1 = new google.maps.Map(document.getElementById("map1"), {
         zoom: 0,
         center: new google.maps.LatLng(0, 0),

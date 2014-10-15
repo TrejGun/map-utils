@@ -1,5 +1,7 @@
 google.maps.event.addDomListener(window, "load", function () {
 
+    "use strict";
+
     // example 1
     var map1 = new google.maps.Map(document.getElementById("map1"), {
         zoom: 0,
@@ -305,6 +307,9 @@ google.maps.event.addDomListener(window, "load", function () {
         map: map9,
         draggable: true
     });
+
+    // for consistency
+    void(marker);
 
     new google.maps.RaphaelOverlayView({
         map: map9,
