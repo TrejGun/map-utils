@@ -22,6 +22,8 @@
 
 	"globals": {
 		"google": true,
-		"Raphael": true
+		"Raphael": true,
+        "define": true,
+        "require": true
 	}
 }

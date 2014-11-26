@@ -1,20 +1,17 @@
 {
     "name": "map-utils",
-    "version": "0.0.1",
     "homepage": "http://mabp.kiev.ua/",
     "authors": [
         "CTAPbIu_MABP <ctapbiumabp@gmail.com>"
     ],
-    "ignore": [
-        "**/.*",
-        "dist",
-        "node_modules",
-        "test",
-        "*.json",
-        "*.md",
-        "Gruntfile.js"
+    "main": [
+        "assets/*",
+        "dist/*"
     ],
     "dependencies": {
+        "requirejs": "2.1.5",
+        "requirejs-plugins": "git://github.com/millermedeiros/requirejs-plugins.git#ac9de4bfae70b0630754a9faf93c42db362cb9a2",
+        "require-css": "0.1.7",
         "raphael": "2.1.2",
         "graphael": "git@github.com:CTAPbIuMABP/g.raphael.git#0.5.0"
     }

@@ -25,30 +25,26 @@ module.exports = function (grunt) {
             }
 
         },
-        uglify: {
-            js: {
+        requirejs: {
+            dist: {
                 options: {
-                    sourceMap: true
-                },
-                files: [
-                    {
-                        expand: true,
-                        cwd: "assets/js",
-                        src: "**/*.js",
-                        dest: "dist/js",
-                        ext: ".min.js"
+                    baseUrl: "assets/js",
+                    name: "map-utils",
+                    out: "dist/js/map-utils.min.js",
+                    optimize: "uglify2",
+                    preserveLicenseComments: false,
+                    generateSourceMaps: true,
+                    paths: {
+                        // libs
+                        "raphael": "empty:",
+                        "google-map": "empty:"
                     }
-                ]
+                }
             }
         },
         compare_size: {
             files: [
-                "dist/js/maptypes/coordinate.min.js",
-                "dist/js/maptypes/greyscale.min.js",
-                "dist/js/overlays/canvas.min.js",
-                "dist/js/overlays/raphael.min.js",
-                "dist/js/projections/euclidean.min.js",
-                "dist/js/utils/dimensions.min.js"
+                "dist/js/map-utils.min.js"
             ],
             options: {
                 compress: {
@@ -63,10 +59,11 @@ module.exports = function (grunt) {
 
     // Load grunt tasks from NPM packages
     grunt.loadNpmTasks("grunt-contrib-jshint");
-    grunt.loadNpmTasks("grunt-contrib-uglify");
+    grunt.loadNpmTasks("grunt-contrib-requirejs");
     grunt.loadNpmTasks("grunt-compare-size");
 
     // Default task(s).
-    grunt.registerTask("default", ["jshint", "uglify", "compare_size"]);
+    grunt.registerTask("build", ["requirejs", "jshint", "compare_size"]);
+    grunt.registerTask("default", ["build"]);
 
 };

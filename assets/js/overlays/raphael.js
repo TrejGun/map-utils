@@ -1,8 +1,24 @@
-(function () {
+(function (factory) {
 
     "use strict";
 
-    function RaphaelOverlayView (options) {
+    if (typeof define === "function" && define.amd) {
+
+        // AMD. Register as an anonymous module.
+        define([
+            "raphael",
+            "../utils/dimensions"
+        ], factory);
+    } else {
+
+        // Browser globals
+        factory(Raphael);
+    }
+}(function () {
+
+    "use strict";
+
+    function RaphaelOverlayView(options) {
         this.setMap(options.map);
         this.shapes = options.shapes || [];
         this.dimensions = new google.maps.Dimensions(this);
@@ -208,4 +224,4 @@
 
     google.maps.RaphaelOverlayView = RaphaelOverlayView;
 
-})();
+}));

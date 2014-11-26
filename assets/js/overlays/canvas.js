@@ -1,4 +1,19 @@
-(function () {
+(function (factory) {
+
+    "use strict";
+
+    if (typeof define === "function" && define.amd) {
+
+        // AMD. Register as an anonymous module.
+        define([
+            "../utils/dimensions"
+        ], factory);
+    } else {
+
+        // Browser globals
+        factory();
+    }
+}(function () {
 
     "use strict";
 
@@ -111,4 +126,4 @@
 
     google.maps.CanvasOverlay = CanvasOverlay;
 
-})();
+}));
