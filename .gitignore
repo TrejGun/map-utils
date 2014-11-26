@@ -6,5 +6,4 @@
 
 # NODE
 node_modules
-dist
-
+dist/vendors

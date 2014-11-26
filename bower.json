@@ -8,8 +8,16 @@
         "assets/*",
         "dist/*"
     ],
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "test",
+        "Gruntfile.js",
+        "package.json",
+        "server.js"
+    ],
     "dependencies": {
-        "requirejs": "2.1.5",
+        "requirejs": "2.1.15",
         "requirejs-plugins": "git://github.com/millermedeiros/requirejs-plugins.git#ac9de4bfae70b0630754a9faf93c42db362cb9a2",
         "require-css": "0.1.7",
         "raphael": "2.1.2",
