@@ -2,14 +2,6 @@ require.config({
 
     baseUrl: "/",
 
-    "shim": {
-
-        // maps
-        "map-utils": {
-            deps: ["google-map"]
-        }
-    },
-
     "paths": {
 
         // plugins
@@ -17,7 +9,7 @@ require.config({
         "css": "dist/vendors/require-css/css.min",
 
         // map utils
-        "map-utils": "assets/js",
+        //"map-utils": "assets/js",
 
         // google maps
         "google-map": "http://maps.google.com/maps/api/js?v=3&sensor=false"

@@ -6,4 +6,9 @@
 
 # NODE
 node_modules
+
+# bower
 dist/vendors
+
+# grunt
+dist/.sizecache.json

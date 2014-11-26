@@ -1,6 +1,19 @@
 require(["../js/require.config.js"], function () {
     "use strict";
 
+    require.config({
+        "shim": {
+            // maps
+            "map-utils": {
+                deps: ["google-map"]
+            }
+        },
+        "paths": {
+            // map utils
+            "map-utils": "assets/js"
+        }
+    });
+
     require([
         "async!google-map"
     ], function () {

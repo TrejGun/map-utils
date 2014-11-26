@@ -29,11 +29,17 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     baseUrl: "assets/js",
-                    name: "map-utils",
                     out: "dist/js/map-utils.min.js",
                     optimize: "uglify2",
                     preserveLicenseComments: false,
                     generateSourceMaps: true,
+                    skipModuleInsertion: true,
+                    include: [
+                        "maptypes/coordinate",
+                        "maptypes/greyscale",
+                        "overlays/canvas",
+                        "overlays/raphael"
+                    ],
                     paths: {
                         // libs
                         "raphael": "empty:",

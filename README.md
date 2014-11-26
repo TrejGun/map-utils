@@ -6,10 +6,12 @@ To run visual tests:
 ```bash
 npm install -g grunt-cli bower
 bower install
-grunt
+grunt build
+node server
 ```
 
-then open test in your browser
+then open test in your browser and navigate to 
+http://localhost:8888/test/index.html
 
 Overlays
 --------
