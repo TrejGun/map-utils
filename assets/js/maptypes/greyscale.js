@@ -35,8 +35,8 @@
                 y = coord.y;
 
             if (y < 0 || y >= c || x < 0 || x >= c || zoom > 4) {
-                div.style.height = "256px";
-                div.style.width = "256px";
+                div.style.height = this.tileSize.height + "px";
+                div.style.width = this.tileSize.width + "px";
                 div.style.backgroundColor = "#fcf8ed";
                 div.style.fontSize = "9";
                 div.style.textAlign = "center";
@@ -69,14 +69,14 @@
                 context = canvas.getContext("2d"),
                 img = new Image();
 
-            canvas.setAttribute("width", 256);
-            canvas.setAttribute("height", 256);
+            canvas.setAttribute("width", this.tileSize.width);
+            canvas.setAttribute("height", this.tileSize.height);
 
             img.crossOrigin = "anonymous"; // http://example.com/crossdomain.xml
-            img.src = "http://www.thekremercollection.com/art/img/paintings/zoom/portrait_of_a_spanish_grande_tiles_14/" + f + ".jpg";
+            img.src = this.url + "/" + f + ".jpg";
             img.onload = function () {
                 context.drawImage(img, 0, 0);
-                var imgdata = context.getImageData(0, 0, 256, 256),
+                var imgdata = context.getImageData(0, 0, this.tileSize.width, this.tileSize.height),
                     pix = imgdata.data;
                 for (var i = 0, grayscale = 0, n = pix.length; i < n; i += 4) {
                     grayscale = pix[i] * 0.3 + pix[i + 1] * 0.59 + pix[i + 2] * 0.11;
@@ -85,7 +85,7 @@
                     pix[i + 2] = grayscale;  // blue
                 }
                 context.putImageData(imgdata, 0, 0);
-            };
+            }.bind(this);
 
             div.appendChild(canvas);
             return div;

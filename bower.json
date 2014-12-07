@@ -18,7 +18,7 @@
     ],
     "dependencies": {
         "requirejs": "2.1.15",
-        "requirejs-plugins": "git://github.com/millermedeiros/requirejs-plugins.git#ac9de4bfae70b0630754a9faf93c42db362cb9a2",
+        "requirejs-plugins": "1.0.3",
         "require-css": "0.1.7",
         "raphael": "2.1.2",
         "graphael": "git@github.com:CTAPbIuMABP/g.raphael.git#0.5.0"

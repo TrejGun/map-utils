@@ -6,7 +6,12 @@
 
         // AMD. Register as an anonymous module.
         define([
-            "raphael",
+			"raphael", // 1.5.2 / 2.1.2
+			"raphael.g",
+			"raphael.g.bar",
+			"raphael.g.dot",
+			"raphael.g.line",
+			"raphael.g.pie",
             "../utils/dimensions"
         ], factory);
     } else {
@@ -172,14 +177,14 @@
                     data.ry
                 );
             case "piechart":
-                return this.canvas.piechart(
+				return (this.canvas.g ? this.canvas.g : this.canvas).piechart(
                         data.x + param.left,
                         data.y + param.top,
                     data.r,
                     info.data
                 );
             case "barchart":
-                return this.canvas.barchart(
+				return (this.canvas.g ? this.canvas.g : this.canvas).barchart(
                         data.x + param.left,
                         data.y + param.top,
                     data.width,
@@ -188,7 +193,7 @@
                     info.param
                 );
             case "hbarchart":
-                return this.canvas.hbarchart(
+				return (this.canvas.g ? this.canvas.g : this.canvas).hbarchart(
                         data.x + param.left,
                         data.y + param.top,
                     data.width,
@@ -197,7 +202,7 @@
                     info.param
                 );
             case "linechart":
-                return this.canvas.linechart(
+				return (this.canvas.g ? this.canvas.g : this.canvas).linechart(
                         data.x + param.left,
                         data.y + param.top,
                     data.width,
@@ -207,7 +212,7 @@
                     info.param
                 );
             case "dotchart":
-                return this.canvas.dotchart(
+				return (this.canvas.g ? this.canvas.g : this.canvas).dotchart(
                         data.x + param.left,
                         data.y + param.top,
                     data.width,

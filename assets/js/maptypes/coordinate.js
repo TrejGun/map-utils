@@ -36,8 +36,8 @@
                 y = coord.y;
 
             if (y < 0 || y >= c || x < 0 || x >= c || zoom > 4) {
-                div.style.height = "256px";
-                div.style.width = "256px";
+                div.style.height = this.tileSize.height + "px";
+                div.style.width = this.tileSize.width + "px";
                 div.style.backgroundColor = "#fcf8ed";
                 div.style.fontSize = "9";
                 div.style.textAlign = "center";
@@ -66,8 +66,9 @@
                 }
             }
 
-            div.innerHTML = "<img src=\"http://www.thekremercollection.com/art/img/paintings/zoom/portrait_of_a_spanish_grande_tiles_14/" + f + ".jpg\" alt=\"\" width=\"256\" height=\"256\" />";
-
+            var img = new Image();
+            img.src = this.url + "/" + f + ".jpg";
+            div.appendChild(img);
             return div;
         }
     };

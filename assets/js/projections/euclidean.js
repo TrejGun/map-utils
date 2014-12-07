@@ -15,11 +15,17 @@
 
     "use strict";
 
+    var EUCLIDEAN_RANGE_X = 256;
+    var EUCLIDEAN_RANGE_Y = 256;
+
+    /**
+     * @constructor
+     * @implements {google.maps.Projection}
+     */
     var EuclideanProjection = function () {
-        var EUCLIDEAN_RANGE = 256;
-        this.pixelOrigin = new google.maps.Point(EUCLIDEAN_RANGE / 2, EUCLIDEAN_RANGE / 2);
-        this.pixelsPerLonDegree = EUCLIDEAN_RANGE / 360;
-        this.pixelsPerLonRadian = EUCLIDEAN_RANGE / (2 * Math.PI);
+        this.pixelOrigin = new google.maps.Point(EUCLIDEAN_RANGE_X / 2, EUCLIDEAN_RANGE_Y / 2);
+        this.pixelsPerLonDegree = EUCLIDEAN_RANGE_X / 360;
+        this.pixelsPerLonRadian = EUCLIDEAN_RANGE_Y / (2 * Math.PI);
         this.scaleLat = 2;
         this.scaleLng = 1;
     };
@@ -40,10 +46,10 @@
             return point;
         },
 
-        fromPointToLatLng: function (point) {
-            var lng = (point.x - this.pixelOrigin.x) / this.pixelsPerLonDegree / this.scaleLng - this.offsetLng,
-                lat = -1 * (point.y - this.pixelOrigin.y) / this.pixelsPerLonDegree / this.scaleLat - this.offsetLat;
-            return new google.maps.LatLng(lat, lng, true);
+        fromPointToLatLng: function (point, noWrap) {
+            var lat = -1 * (point.y - this.pixelOrigin.y) / this.pixelsPerLonDegree / this.scaleLat - this.offsetLat,
+                lng = (point.x - this.pixelOrigin.x) / this.pixelsPerLonDegree / this.scaleLng - this.offsetLng;
+            return new google.maps.LatLng(lat, lng, noWrap);
         }
     };
 
